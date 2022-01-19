@@ -8,11 +8,13 @@
 # socket server for 3D visualization
 from easymocap.socket.o3d import VisOpen3DSocket
 from easymocap.config.vis_socket import Config
+import time
 
 def main(cfg):
     server = VisOpen3DSocket(cfg.host, cfg.port, cfg)
     while True:
         server.update()
+        time.sleep(0.01)
 
 if __name__ == "__main__":
     cfg = Config.load_from_args()
